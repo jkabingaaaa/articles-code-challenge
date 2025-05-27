@@ -8,7 +8,6 @@ class Article:
         self.magazine = magazine
 
     def save(self):
-        """Save the article to the database"""
         if not self.title:
             raise ValueError("Article title cannot be empty")
         if not hasattr(self.author, 'id') or not hasattr(self.magazine, 'id'):
@@ -18,30 +17,22 @@ class Article:
             cursor = conn.cursor()
             if self.id is None:
                 cursor.execute(
-                    "INSERT INTO articles (title, author_id, magazine_id) VALUES (?, ?, ?)",
+                   
                     (self.title, self.author.id, self.magazine.id)
                 )
                 self.id = cursor.lastrowid
             else:
                 cursor.execute(
-                    "UPDATE articles SET title = ?, author_id = ?, magazine_id = ? WHERE id = ?",
+            
                     (self.title, self.author.id, self.magazine.id, self.id)
                 )
             conn.commit()
 
     @classmethod
     def find_by_id(cls, id):
-        """Find an article by ID"""
         with get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute(
-                """
-                SELECT a.*, au.name as author_name, m.name as magazine_name, m.category
-                FROM articles a
-                JOIN authors au ON a.author_id = au.id
-                JOIN magazines m ON a.magazine_id = m.id
-                WHERE a.id = ?
-                """,
                 (id,)
             )
             row = cursor.fetchone()
@@ -53,22 +44,19 @@ class Article:
 
     @classmethod
     def find_by_author(cls, author_id):
-        """Find all articles by a specific author"""
+        
         with get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute(
-                "SELECT * FROM articles WHERE author_id = ?",
                 (author_id,)
             )
             return cursor.fetchall()
 
     @classmethod
     def find_by_magazine(cls, magazine_id):
-        """Find all articles in a specific magazine"""
         with get_connection() as conn:
             cursor = conn.cursor()
             cursor.execute(
-                "SELECT * FROM articles WHERE magazine_id = ?",
                 (magazine_id,)
             )
             return cursor.fetchall()

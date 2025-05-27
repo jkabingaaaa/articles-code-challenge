@@ -3,7 +3,6 @@ from lib.models.magazine import Magazine
 from lib.models.article import Article
 
 def seed_database():
-    # Create authors
     a1 = Author("John Doe")
     a1.save()
     a2 = Author("Jane Smith")
@@ -11,7 +10,6 @@ def seed_database():
     a3 = Author("Bob Johnson")
     a3.save()
 
-    # Create magazines
     m1 = Magazine("Tech Today", "Technology")
     m1.save()
     m2 = Magazine("Science Weekly", "Science")
@@ -19,7 +17,6 @@ def seed_database():
     m3 = Magazine("Sports Digest", "Sports")
     m3.save()
 
-    # Create articles
     Article("Python Programming", a1, m1).save()
     Article("Machine Learning", a1, m1).save()
     Article("Quantum Physics", a2, m2).save()
