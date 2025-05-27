@@ -1,4 +1,4 @@
-from lib.db.connection import get_connection
+from lib.db.connections import get_connection
 
 class Magazine:
     def __init__(self, name, category, id=None):

@@ -1,4 +1,6 @@
-from lib.db.connection import get_connection
+from lib.db.connections import get_connection
+from lib.models.article import Article
+from lib.models.magazine import Magazine
 
 class Author:
     def __init__(self, name, id=None):
