@@ -1,6 +1,7 @@
-from lib.db.connections import get_connection
-from lib.models.magazine import Magazine
+# Correct import structure
 from lib.models.author import Author
+from lib.models.magazine import Magazine
+from lib.db.connections import get_connection  
 
 class Article:
     def __init__(self, title, author, magazine, id=None):
@@ -65,3 +66,8 @@ class Article:
 
     def __repr__(self):
         return f"<Article id={self.id} title='{self.title}' author_id={self.author.id} magazine_id={self.magazine.id}>"
+
+
+
+
+ 

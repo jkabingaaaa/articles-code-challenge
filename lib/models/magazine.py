@@ -1,4 +1,7 @@
-from lib.db.connections import get_connection
+from lib.models.author import Author
+from lib.models.magazine import Magazine
+from lib.models.article import Article
+from lib.db.connections import get_connection 
 
 class Magazine:
     def __init__(self, name, category, id=None):
@@ -92,3 +95,6 @@ class Magazine:
 
     def __repr__(self):
         return f"<Magazine id={self.id} name='{self.name}' category='{self.category}'>"
+    
+
+

@@ -1,6 +1,7 @@
-from lib.db.connections import get_connection
-from lib.models.article import Article
+from lib.models.author import Author
 from lib.models.magazine import Magazine
+from lib.models.article import Article
+from lib.db.connections import get_connection  # This is critical
 
 class Author:
     def __init__(self, name, id=None):
@@ -82,3 +83,5 @@ class Author:
 
     def __repr__(self):
         return f"<Author id={self.id} name='{self.name}'>"
+    
+
