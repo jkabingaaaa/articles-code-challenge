@@ -1,4 +1,4 @@
-from lib.db.connection import initialize_db
+from lib.db.connections import initialize_db
 from lib.db.seed import seed_database
 
 def main():
